@@ -1,59 +1,49 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useMemo, useState, useEffect } from "react";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Table from "./Table";
 
-class App extends React.Component {
-  state = {
-    filter: "",
-    vough: []
-  };
+function App() {
+  const [data, setData] = useState([]);
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Cliente",
+        accessor: "name"
+      },
+      {
+        Header: "Email",
+        accessor: "email"
+      },
+      {
+        Header: "Telefone",
+        accessor: "phone"
+      },
+      {
+        Header: "Compania",
+        accessor: "company.name"
+      },
+      {
+        Header: "Nicho",
+        accessor: "company.bs",
+      }
+    ],
+    []
+  );
 
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
-      .then(
-        (res) => {
-        this.setState({
-          vough: res
-        });
-      });
-  }
+  useEffect(() => {
+    (async () => {
+      const result = await axios("https://jsonplaceholder.typicode.com/users");
+      setData(result.data);
+    })();
+  }, []);
 
-  handleChange = event => {
-    this.setState({ filter: event.target.value });
-  };
-
-  render() {
-    return (
-      <div className="container">
-        <h1>Leads</h1>
-        <div>
-          <input placeholder="Pesquise..."></input>
-        </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Cliente</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Companhia</th>
-                <th>Nicho</th>
-              </tr>
-            </thead>
-            {this.state.vough.map(item => (
-            <tbody key={item.name}>
-              <tr>
-                <td>{item.name}</td>
-                <td>{item.email}</td>
-                <td>{item.phone}</td>
-                <td>{item.company.name}</td>
-                <td>{item.company.bs}</td>
-              </tr>
-            </tbody>
-            ))}
-          </table>
-      </div>
-    )
-  }
+  return (
+    <div className="App">
+      <Table columns={columns} data={data} />
+    </div>
+  );
 }
 
 export default App;
