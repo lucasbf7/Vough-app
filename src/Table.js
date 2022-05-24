@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFilters, useTable, useSortBy } from 'react-table';
-import './App.css';
+import './styles.css';
 
 export default function Table ({ columns, data }) {
     const {

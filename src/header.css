@@ -1,0 +1,48 @@
+header {
+    height: 60px;
+    background-color: #eeeeee;
+    color: #0a1f4f;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 2px 2px, rgb(0 0 0 / 6%) 0px 2px 3px -3px, rgb(0 0 0 / 7%) 0px 2px 3px 0px;
+}
+
+.login {
+    margin-left: 25px;
+    display: flex;
+    height: max-content;
+}
+
+.lgnButton {
+    position: relative;
+    display: inline-block;
+}
+
+h4 {
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: #0a1f4f;
+    border-width: 0;
+    color: #fff;
+    font-size: 15px;
+    height: 35px;
+    margin: 11px 8px;
+    outline: none;
+    width: 35px;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        width: 130%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h4 {
+        font-size: 15px;
+    }
+}
