@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFilters, useTable, useSortBy } from 'react-table';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './App.css';
 
 export default function Table ({ columns, data }) {
     const {
@@ -20,35 +20,41 @@ export default function Table ({ columns, data }) {
     );
 
     const [filterInput, setFilterInput] = useState("");
-    const handleFilterChange = e => {
+    const handleFilterBs = e => {
         const value = e.target.value || undefined;
         setFilter("company.bs", value)
         setFilterInput(value);
     }
 
-    const element= <FontAwesomeIcon icon="fa-light fa-arrow-down-a-z" />
-
     return (        
         <table {...getTableProps()}>
             <thead>
                 <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                     <input
+                     className="search"
                      value={filterInput}
-                     onChange={handleFilterChange}
-                     placeholder={"Pesquise"}
+                     onChange={handleFilterBs}
+                     placeholder={"Pesquise um nicho..."}
                     />
                 </tr>
                 {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map(column => (
-                            <th {...column.getHeaderProps(column.getSortByToggleProps())}
-                             className={column.isSorted
-                                ? column.isSortedDesc
-                                    ? "sort-alpha-asc"
-                                    : "sort-asc"
-                                : ""
-                             }
-                            >{column.render("Header")}</th>
+                            <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                             {column.render("Header")}
+                             <span>
+                                {column.isSorted
+                                 ? column.isSortedDesc
+                                  ? '⬇️'
+                                  : '⬆️'
+                                 : ''
+                                }
+                             </span>
+                            </th>
                         ))}
                     </tr>
                 ))}

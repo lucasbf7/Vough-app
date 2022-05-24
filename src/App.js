@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useMemo, useState, useEffect } from "react";
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from "./Table";
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
       },
       {
         Header: "Compania",
-        accessor: "company.name"
+        accessor: "company.name",
       },
       {
         Header: "Nicho",
@@ -41,6 +40,7 @@ function App() {
 
   return (
     <div className="App">
+      <h2>Leads</h2>
       <Table columns={columns} data={data} />
     </div>
   );
