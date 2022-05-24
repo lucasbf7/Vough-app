@@ -79,18 +79,48 @@ td {
   padding: 9px;
 }
 
-@media screen and (min-width: 480px) {
-  
+@media screen and (max-width: 480px) {
+  table {
+    width: 10%;
+  }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
+  .App {
+    padding-top: 0;
+  }
   
-}
+  body {
+    font-size: 10px;    
+  }
 
-@media screen and (min-width: 992px) {
-  
-}
+  table {
+    align-self: center;
+    width: fit-content;
+    margin: 5px;
+  }
 
-@media screen and (min-width: 1201px) {
+  tr > th {
+    width: 5%;
+  }
+
+  tr > th:nth-child(5) {
+    width: 15%;
+  }
   
+  tr > th, input {
+    height: 10px;
+  }
+
+  .search {
+    padding: 2.5%;
+    margin: 2%;
+    height: 8px;
+    width: fit-content;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 8px;
+    color: #000;
+  }
 }
